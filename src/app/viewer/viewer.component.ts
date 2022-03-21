@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService } from '../notes.service'
+import { Note } from '../types/note';
 
 @Component({
   selector: 'app-viewer',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./viewer.component.scss']
 })
 export class ViewerComponent implements OnInit {
+  notesService:any;
+  notesJson:Note[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.notesService = new NotesService();
+    this.notesJson = this.notesService.getNotes();
   }
 
+  ngOnInit(): void {}
 }
